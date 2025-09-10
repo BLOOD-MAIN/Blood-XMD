@@ -66,7 +66,7 @@ _𝐖𝐇𝐀𝐓𝐒𝐀𝐏𝐏 𝐂𝐇𝐀𝐍𝐍𝐄𝐋 𝐋𝐈𝐍𝐊 
             message: {
                 contactMessage: {
                     displayName: "SACHITHRA MADUSANKA  ✅",
-                    vcard: "BEGIN:VCARD\nVERSION:3.0\nFN: BLOOD XMD VERIFIED ✅\nORG:CASEYRHODES-TECH BOT;\nTEL;type=CELL;type=VOICE;waid=94761332610:+94761332610\nEND:VCARD"
+                    vcard: "BEGIN:VCARD\nVERSION:3.0\nFN: BLOOD XMD VERIFIED ✅\nORG:CASEYRHODES-TECH BOT;\nTEL;type=CELL;type=VOICE;waid=94750140295:+94750140295\nEND:VCARD"
                 }
             }
         };
