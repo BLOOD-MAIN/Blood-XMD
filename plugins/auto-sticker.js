@@ -17,7 +17,7 @@ cmd({
             from,
             {
               sticker: { url: data[keyword] },
-              package: 'CASEYRHODES-XMD'
+              package: 'BLOOD-XMD'
             },
             { quoted: mek }
           );
