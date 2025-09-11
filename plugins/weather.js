@@ -55,8 +55,8 @@ END:VCARD`;
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363302677217436@newsletter',
-                    newsletterName: "CASEYRHODES TECH",
+                    newsletterJid: '120363419102725912@newsletter',
+                    newsletterName: "BLOOD-XMD",
                     serverMessageId: 100
                 }
             }
