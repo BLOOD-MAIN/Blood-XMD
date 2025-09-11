@@ -27,7 +27,7 @@ cmd({
         const media = response.data.BK9;
         
         // Prepare the caption
-        const desc = `*CASEYRHODES XMD*
+        const desc = `*BLOOD XMD*
 
 *PINS DOWNLOADER*
 ╭━━❐━⪼
