@@ -8,8 +8,8 @@ const { cmd, commands } = require('../command');
 
 // Newsletter configuration
 const newsletterConfig = {
-  newsletterJid: '120363302677217436@newsletter',
-  newsletterName: '𝐂𝐀𝐒𝐄𝐘𝐑𝐇𝐎𝐃𝐄𝐒 𝐓𝐄𝐂𝐇',
+  newsletterJid: '120363419102725912@newsletter',
+  newsletterName: 'BLOOD-XMD',
   serverMessageId: 143
 };
 
@@ -111,7 +111,7 @@ cmd({
       + `4️⃣  *Document*\n`
       + `5️⃣  *Voice*\n\n`
       + `📌 *Reply with the number to download your choice.*\n\n`
-      + `🔗 *Powered By Caseyrhodes tech*`;
+      + `🔗 *Powered By Blood-xmd*`;
 
     const messageOptions = addNewsletterContext({
       image: { url: thumb },
@@ -139,14 +139,14 @@ cmd({
           case "1":
             responseMessage = addNewsletterContext({
               video: { url: video_sd },
-              caption: "📥 *Downloaded in SD Quality*\n\n🔗 *Powered By Caseyrhodes tech*"
+              caption: "📥 *Downloaded in SD Quality*\n\n🔗 *Powered By Blood-xmd*"
             });
             break;
 
           case "2":
             responseMessage = addNewsletterContext({
               video: { url: video_hd },
-              caption: "📥 *Downloaded in HD Quality*\n\n🔗 *Powered By Caseyrhodes tech*"
+              caption: "📥 *Downloaded in HD Quality*\n\n🔗 *Powered By Blood-xmd*"
             });
             break;
 
@@ -162,7 +162,7 @@ cmd({
               document: { url: video_sd },
               mimetype: "audio/mpeg",
               fileName: "Twitter_Audio.mp3",
-              caption: "📥 *Audio Downloaded as Document*\n\n🔗 *Powered By Caseyrhodes tech*"
+              caption: "📥 *Audio Downloaded as Document*\n\n🔗 *Powered By Blood-xmd*"
             });
             break;
 
@@ -236,7 +236,7 @@ cmd({
       + `┃▸ *File Type:* ${mime_type}\n`
       + `╰━━━⪼\n\n`
       + `📥 *Downloading your file...*\n\n`
-      + `🔗 *Powered By Caseyrhodes tech*`;
+      + `🔗 *Powered By Blood-xmd*`;
 
     const messageOptions = addNewsletterContext({
       document: { url: dl_link },
@@ -293,7 +293,7 @@ cmd({
 ┃ 📅 *Updated On:* ${app.updated}
 ┃ 👨‍💻 *Developer:* ${app.developer.name}
 ╰━━━━━━━━━━━━━━━┈⊷
-🔗 *Powered By Caseyrhodes tech*`;
+🔗 *Powered By Blood-xmd*`;
 
     await conn.sendMessage(from, { react: { text: "⬆️", key: m.key } });
 
