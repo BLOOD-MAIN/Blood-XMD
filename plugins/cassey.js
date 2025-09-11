@@ -43,14 +43,14 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
   new Date().getHours() < 12 ? 'Morning' : 
   (new Date().getHours() < 18 ? 'Afternoon' : 'Evening')
 }, ${pushname}!* 🌟
-╭━━━《 *𝐂𝐀𝐒𝐄𝐘𝐑𝐇𝐎𝐃𝐄𝐒 𝐗𝐌𝐃* 》━━━┈⊷
+╭━━━《 *𝐁𝐋𝐎𝐎𝐃 𝐗𝐌𝐃* 》━━━┈⊷
 ┃❍⁠⁠⁠⁠╭──────────────
 ┃❍⁠⁠⁠⁠│▸  Usᴇʀ : ${config.OWNER_NAME}
 ┃❍⁠⁠⁠⁠│▸  ʙᴀɪʟᴇʏs : 𝐌𝐮𝐥𝐭𝐢 𝐝𝐞𝐯𝐢𝐜𝐞
 ┃❍⁠⁠⁠⁠│▸  ᴛᴏᴛᴀʟ ᴄᴏᴍᴍᴀɴᴅs : *${totalCommands}*
 ┃❍⁠⁠⁠⁠│▸  𝖳ʏᴘᴇ : 𝐍𝐨𝐝𝐞𝐣𝐬
 ┃❍⁠⁠⁠⁠│▸  ᴘʟᴀᴛғᴏʀᴍ : 𝐇𝐞𝐫𝐨𝐤𝐮
-┃❍⁠⁠⁠⁠│▸  𝖣ᴇᴠᴇʟᴏᴘᴇʀ : ᴄᴀsᴇʏʀʜᴏᴅᴇs ᴛᴇᴄʜ
+┃❍⁠⁠⁠⁠│▸  𝖣ᴇᴠᴇʟᴏᴘᴇʀ : ꜱᴀᴄʜɪᴛʜʀᴀ ᴍᴀᴅᴜꜱᴀɴᴋᴀ
 ┃❍⁠⁠⁠⁠│▸  𝖬ᴏᴅᴇ : [${config.MODE}]
 ┃❍⁠⁠⁠⁠│▸  𝖯ʀᴇғɪx : *[${config.PREFIX}]*
 ┃❍⁠⁠⁠⁠│▸  ᴛɪᴍᴇ : *${time}*
@@ -94,7 +94,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
             },
             message: {
                 contactMessage: {
-                    displayName: "CASEYRHODES VERIFIED ✅",
+                    displayName: "SACHITHRA MADUSANKA  ✅",
                     vcard: "BEGIN:VCARD\nVERSION:3.0\nFN: Caseyrhodes VERIFIED ✅\nORG:CASEYRHODES-TECH BOT;\nTEL;type=CELL;type=VOICE;waid=254112192119:+254112192119\nEND:VCARD"
                 }
             }
@@ -109,8 +109,8 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
                     forwardingScore: 5,
                     isForwarded: true,
                     forwardedNewsletterMessageInfo: {
-                        newsletterJid: '120363302677217436@newsletter', 
-                        newsletterName: "CASEYRHODES-XMD",
+                        newsletterJid: '120363419102725912@newsletter', 
+                        newsletterName: "BLOOD-XMD",
                         serverMessageId: 143
                     }
                 }
