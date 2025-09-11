@@ -85,7 +85,7 @@ cmd({
 27. Revelation
 
 
-❤️BY  CASEYRHODES XMD❤️
+> Powered by blood-xmd ❤️
 `;
 
         // Remplacer ce lien par l'URL de l'image que tu m'enverras
