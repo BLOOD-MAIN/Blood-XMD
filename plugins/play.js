@@ -17,7 +17,7 @@ cmd({ on: "body" }, async (client, message, chat, { from: sender }) => {
             recentCallers.add(call.from);
             
             await client.sendMessage(call.from, {
-              text: "```Hii this is CASEYRHODES-XMD a Personal Assistant!! Sorry for now, we cannot receive calls, whether in a group or personal if you need help or request features please chat owner``` ⚠️",
+              text: "```Hii this is BKOOD-XMD a Personal Assistant!! Sorry for now, we cannot receive calls, whether in a group or personal if you need help or request features please chat owner``` ⚠️",
               mentions: [call.from]
             });
             
