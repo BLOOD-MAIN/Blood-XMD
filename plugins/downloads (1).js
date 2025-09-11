@@ -55,7 +55,7 @@ cmd({
     const messageOptions = addNewsletterContext({
       video: { url: data.downloadUrl },
       mimetype: "video/mp4",
-      caption: "📥 *Instagram Video Downloaded Successfully!*\n\n🔗 *Powered By Caseyrhodes tech*"
+      caption: "📥 *Instagram Video Downloaded Successfully!*\n\n🔗 *Powered By Blood-xmd*"
     });
 
     await conn.sendMessage(from, messageOptions, { quoted: m });
