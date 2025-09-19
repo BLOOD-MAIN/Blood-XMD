@@ -13,7 +13,8 @@ AUTO_STATUS_REPLY: process.env.AUTO_STATUS_REPLY || "false",
 // make true if you want auto reply on status 
 AUTO_STATUS_REACT: process.env.AUTO_STATUS_REACT || "true",
 //anticall on/off
-   ANTI_CALL: process.env.ANTI_CALL || "true",
+CINESUB_API_KEY: process.env.CINESUB_API_KEY || "79653f59-d918-4a00-9143-bee74a6b4c82",
+ANTI_CALL: process.env.ANTI_CALL || "true",
 // make true if you want auto reply on status 
 AUTO_STATUS_MSG: process.env.AUTO_STATUS_MSG || "*SEEN YOUR STATUS BY BLOOD XMD 🤍*",
 // set the auto reply massage on status reply  
