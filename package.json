@@ -9,6 +9,7 @@
     "restart": "pm2 restart CASEYRHODES-XMD"
   },
   "dependencies": {
+    "npm install @whiskeysockets/baileys@6.5.0",
     "baileys": "github:nstar-y/bail",
     "@whiskeysockets/baileys": "^6.7.18",
     "@adiwajshing/keyed-db": "^0.2.4",
