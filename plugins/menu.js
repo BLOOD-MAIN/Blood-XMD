@@ -1,88 +1,78 @@
 const config = require('../config');
-const { cmd } = require('../command');
-const os = require('os');
+const { cmd, commands } = require('../command');
+const { runtime } = require('../lib/functions');
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
+
+const getRandomImage = () => {
+    try {
+        const srcPath = path.join(__dirname, '../sric');
+        const files = fs.readdirSync(srcPath);
+        const imageFiles = files.filter(file =>
+            file.endsWith('.jpg') || file.endsWith('.jpeg') || file.endsWith('.png')
+        );
+
+        if (imageFiles.length === 0) {
+            return 'https://files.catbox.moe/1nr6yp.jpg';
+        }
+
+        const randomImage = imageFiles[Math.floor(Math.random() * imageFiles.length)];
+        return path.join(srcPath, randomImage);
+    } catch (e) {
+        console.log('Error getting random image:', e);
+        return 'https://files.catbox.moe/1nr6yp.jpg';
+    }
+};
 
 cmd({
-    pattern: "mainmenu",
-    desc: "Show BLOOD-XMD Main Button Menu",
+    pattern: "menu",
+    desc: "Show interactive button menu",
     category: "menu",
-    react: "⚡",
+    react: "🧾",
     filename: __filename
-}, async (conn, mek, m, { from, reply }) => {
+}, async (conn, mek, m, { from, pushname }) => {
     try {
-        const startTime = global.startTime || Date.now();
-        const uptime = Math.floor((Date.now() - startTime) / 1000);
-        const hours = Math.floor(uptime / 3600);
-        const minutes = Math.floor((uptime % 3600) / 60);
-        const seconds = Math.floor(uptime % 60);
+        const totalCommands = Object.keys(commands).length;
 
-        const captionText = `
-*╭────◅●◆●▻────➣*
-*│┌─────────➣*
-*││ʙᴏᴛ ᴜᴘᴛɪᴍᴇ ➟ ${hours}h ${minutes}m ${seconds}s*
-*││ᴘʟᴀᴛꜰᴏʀᴍ ➟ ${os.platform()}*
-*││ʀᴀᴍ ᴜꜱᴇɢᴇ ➟ ${(os.totalmem()/1073741824).toFixed(2)} GB*
-*││ʙᴏᴛ ᴏᴡɴᴇʀ ➟ 94761332610*
-*││ᴠᴇʀꜱɪᴏɴ ➟ 1.0.0*
-*│└─────────➣*
-*╰────◅●◆●▻────➢*
+        const menuCaption = `🌟 *Good ${
+            new Date().getHours() < 12 ? 'Morning' :
+            (new Date().getHours() < 18 ? 'Afternoon' : 'Evening')
+        }, ${pushname}!* 🌟
 
-> ʙʟᴏᴏᴅ χ ᴍᴅ ᴍɪɴɪ ʙᴏᴛ 💚👨‍🔧
+╔═══《 *🩸 BLOOD XMD 🩸* 》═══╗
+║ ➤ User: *Sachithra Madusanka*
+║ ➤ Mode: *${config.MODE}*
+║ ➤ Prefix: *${config.PREFIX}*
+║ ➤ Commands: *${totalCommands}*
+║ ➤ Platform: *Heroku*
+║ ➤ Version: *1.0.0*
+╚══════════════════════╝
 
-*ＡＣＴＩＶＥ - ＦＵＬＬ- ＣＯＭＭＡＮＤ*
-
-*┌──────●◆●───➣*
-*││• ᴀʟɪᴠᴇ*
-*││• ᴍᴇɴᴜ*
-*││• ꜱʏꜱᴛᴇᴍ*
-*││• ꜰʙ*
-*││• ꜱᴏɴɢ*
-*││• ꜱᴘᴏᴛɪꜰʏ*
-*││• ᴛᴛ*
-*││• ᴀɪɪᴍᴀɢᴇ*
-*││• ɴᴀꜱᴀ*
-*││• ɢᴏꜱꜱɪᴘ*
-*││• ᴄʀɪᴄᴋᴇᴛ*
-*││• ᴘɪɴɢ*
-*││• ᴅᴇʟᴇᴛᴇᴍᴇ*
-*└────────➣*
-
-*_ＡＵＴＯ  ＳＥＴＴＩＮＧＳ ⚙️_*
-💭 ᴀᴜᴛᴏ ꜱᴛᴀᴛᴜꜱ ꜱᴇᴇɴ 
-💭 ᴀᴜᴛᴏ ꜱᴛᴀᴛᴜꜱ ʀᴇᴀᴄᴛ
-💭 ᴀᴜᴛᴏ ʀᴇᴄᴏʀᴅɪɴɢ ᴏɴ
-`;
+> Select your category from buttons below ⬇️`;
 
         const buttons = [
-            {
-                buttonId: `${config.PREFIX}ping`,
-                buttonText: { displayText: '📶 ʙʟᴏᴏᴅ ᴘɪɴɢ' },
-                type: 1
-            },
-            {
-                buttonId: `${config.PREFIX}alive`,
-                buttonText: { displayText: '💚 ʙʟᴏᴏᴅ ᴀʟɪᴠᴇ' },
-                type: 1
-            },
-            {
-                buttonId: `${config.PREFIX}owner`,
-                buttonText: { displayText: '👨‍🔧 ᴄᴏɴᴛᴀᴄᴛ ᴏᴡɴᴇʀ' },
-                type: 1
-            }
+            { buttonId: "download_menu", buttonText: { displayText: "📥 Download Menu" }, type: 1 },
+            { buttonId: "group_menu", buttonText: { displayText: "👥 Group Menu" }, type: 1 },
+            { buttonId: "fun_menu", buttonText: { displayText: "🎉 Fun Menu" }, type: 1 },
+            { buttonId: "owner_menu", buttonText: { displayText: "👑 Owner Menu" }, type: 1 },
+            { buttonId: "ai_menu", buttonText: { displayText: "🤖 AI Menu" }, type: 1 },
         ];
 
-        const imageUrl = "https://files.catbox.moe/kc86ar.jpg";
+        await conn.sendMessage(
+            from,
+            {
+                image: { url: getRandomImage() },
+                caption: menuCaption,
+                footer: "🩸 BLOOD XMD INTERACTIVE MENU SYSTEM 🩸",
+                buttons,
+                headerType: 4,
+            },
+            { quoted: mek }
+        );
 
-        await conn.sendMessage(from, {
-            image: { url: imageUrl },
-            caption: captionText.trim(),
-            footer: '*POWERED BY SACHITHRA MADUSANKA 👨‍🔧⚡*',
-            buttons: buttons,
-            headerType: 1
-        }, { quoted: mek });
-
-    } catch (error) {
-        console.log("Mainmenu error:", error);
-        reply("❌ Something went wrong while displaying mainmenu!");
+    } catch (err) {
+        console.error("Menu error:", err);
+        await conn.sendMessage(from, { text: "❌ Menu not available right now. Try again later." }, { quoted: mek });
     }
 });
