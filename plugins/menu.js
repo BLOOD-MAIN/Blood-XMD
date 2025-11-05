@@ -1,106 +1,91 @@
-const { cmd } = require('../command')
+const config = require('../config');
+const { cmd, commands } = require('../command');
+const { runtime } = require('../lib/functions');
 
 cmd({
-  pattern: "menu",
-  react: "🩸",
-  desc: "Show main menu with working buttons",
-  category: "main",
-  filename: __filename
+    pattern: "menu",
+    desc: "Interactive List Menu",
+    category: "menu",
+    react: "📋",
+    filename: __filename
 }, async (conn, mek, m, { from, pushname }) => {
 
-  const menuText = `🩸 *Hello ${pushname}!* 🩸
+    try {
+        const totalCommands = Object.keys(commands).length;
 
-╔═══《 *BLOOD XMD MENU* 》═══╗
-║ 👑 Owner : *Sachithra Madusanka*
-║ 💻 Version : *2.0.0*
-║ ⚙️ Mode : *Public*
-╚══════════════════════════╝
+        const sections = [
+            {
+                title: "📥 Download Commands",
+                rows: [
+                    { title: "📦 Download Menu", rowId: ".downloadmenu", description: "Facebook, Tiktok, YouTube, Mediafire etc." },
+                ],
+            },
+            {
+                title: "👥 Group Commands",
+                rows: [
+                    { title: "👑 Group Menu", rowId: ".groupmenu", description: "Manage and control group features" },
+                ],
+            },
+            {
+                title: "🎉 Fun / Reactions / Convert",
+                rows: [
+                    { title: "🎭 Fun Menu", rowId: ".funmenu", description: "Games and random fun tools" },
+                    { title: "💬 Reaction Menu", rowId: ".reactionmenu", description: "Send reaction GIFs & stickers" },
+                    { title: "🔄 Convert Menu", rowId: ".convertmenu", description: "Sticker, Audio, Text, Emoji mix, etc." },
+                ],
+            },
+            {
+                title: "🤖 AI & Anime",
+                rows: [
+                    { title: "🤖 AI Menu", rowId: ".aimenu", description: "ChatGPT, Image AI, Code AI" },
+                    { title: "🌸 Anime Menu", rowId: ".animemenu", description: "Anime & waifu image generator" },
+                ],
+            },
+            {
+                title: "👑 Owner & Settings",
+                rows: [
+                    { title: "⚙️ Settings Menu", rowId: ".settingsmenu", description: "Bot configuration and auto features" },
+                    { title: "👑 Owner Menu", rowId: ".ownermenu", description: "Owner-only commands" },
+                ],
+            },
+            {
+                title: "💻 System / Tools",
+                rows: [
+                    { title: "🏠 Main Menu", rowId: ".mainmenu", description: "Ping, Repo, Runtime, etc." },
+                    { title: "💻 Code Menu", rowId: ".codemenu", description: "Developer & coding tools" },
+                ],
+            },
+            {
+                title: "🖼️ Logos / Extras",
+                rows: [
+                    { title: "🖼️ Logo Menu", rowId: ".logomenu", description: "Create name logos & effects" },
+                    { title: "📚 Bible List", rowId: ".biblelist", description: "Complete list of Bible books" },
+                ],
+            },
+        ];
 
-_Select a category below 👇_`
+        const listMessage = {
+            title: "🩸 BLOOD XMD MAIN MENU 🩸",
+            footer: `
+╔══《 *BLOOD XMD PANEL* 》══╗
+║  👤 User: ${pushname}
+║  ⚙️ Mode: ${config.MODE}
+║  💻 Commands: ${totalCommands}
+║  ⏱ Runtime: ${runtime(process.uptime())}
+║  🕓 Time: ${new Date().toLocaleTimeString()}
+╚════════════════════╝
+> ${config.DESCRIPTION}`,
+            buttonText: "📜 Select Your Menu",
+            sections,
+            headerType: 1,
+        };
 
-  const templateButtons = [
-    { index: 1, urlButton: { displayText: "🌐 Visit Repo", url: "https://github.com/BLOOD-MAIN/BLOOD-XMD-MINI-BOT-V-2" } },
-    { index: 2, quickReplyButton: { displayText: "📥 Download Menu", id: "dl_menu" } },
-    { index: 3, quickReplyButton: { displayText: "👥 Group Menu", id: "grp_menu" } },
-    { index: 4, quickReplyButton: { displayText: "🤖 AI Menu", id: "ai_menu" } },
-    { index: 5, quickReplyButton: { displayText: "👑 Owner Menu", id: "owner_menu" } },
-  ]
+        await conn.sendMessage(from, { text: "🩸", react: { text: '📋', key: mek.key }});
+        await conn.sendMessage(from, { listMessage });
 
-  const message = {
-    image: { url: "https://files.catbox.moe/1nr6yp.jpg" },
-    caption: menuText,
-    footer: "© 2025 BLOOD XMD BOT",
-    templateButtons: templateButtons,
-    viewOnce: true
-  }
+    } catch (e) {
+        console.error("List menu error:", e);
+        await conn.sendMessage(from, { text: "❌ Menu not available right now." });
+    }
 
-  await conn.sendMessage(from, message, { quoted: m })
-})
-
-// ================== SUB MENUS ===================
-
-cmd({
-  pattern: "dl_menu",
-  dontAddCommandList: true
-}, async (conn, mek, m, { from }) => {
-  const msg = `📥 *DOWNLOAD MENU* 📥
-
-• facebook
-• instagram
-• tiktok
-• twitter
-• spotify
-• youtube
-• mediafire
-• play`
-  await conn.sendMessage(from, { text: msg }, { quoted: m })
-})
-
-cmd({
-  pattern: "grp_menu",
-  dontAddCommandList: true
-}, async (conn, mek, m, { from }) => {
-  const msg = `👥 *GROUP MENU* 👥
-
-• add
-• remove
-• promote
-• demote
-• tagall
-• groupinfo
-• setwelcome
-• setbye
-• lock/unlock`
-  await conn.sendMessage(from, { text: msg }, { quoted: m })
-})
-
-cmd({
-  pattern: "ai_menu",
-  dontAddCommandList: true
-}, async (conn, mek, m, { from }) => {
-  const msg = `🤖 *AI MENU* 🤖
-
-• ai
-• gpt
-• imagine
-• meta
-• translate
-• info`
-  await conn.sendMessage(from, { text: msg }, { quoted: m })
-})
-
-cmd({
-  pattern: "owner_menu",
-  dontAddCommandList: true
-}, async (conn, mek, m, { from }) => {
-  const msg = `👑 *OWNER MENU* 👑
-
-• restart
-• block
-• unblock
-• setpp
-• broadcast
-• eval
-• shutdown`
-  await conn.sendMessage(from, { text: msg }, { quoted: m })
-})
+});
