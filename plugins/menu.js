@@ -1,78 +1,88 @@
 const config = require('../config');
 const { cmd } = require('../command');
+const os = require('os');
 
 cmd({
-  pattern: "menu",
-  desc: "Display main bot menu with buttons",
-  category: "menu",
-  react: "📜",
-  filename: __filename
-}, async (conn, mek, m, { from, pushname }) => {
-  try {
+    pattern: "mainmenu",
+    desc: "Show BLOOD-XMD Main Button Menu",
+    category: "menu",
+    react: "⚡",
+    filename: __filename
+}, async (conn, mek, m, { from, reply }) => {
+    try {
+        const startTime = global.startTime || Date.now();
+        const uptime = Math.floor((Date.now() - startTime) / 1000);
+        const hours = Math.floor(uptime / 3600);
+        const minutes = Math.floor((uptime % 3600) / 60);
+        const seconds = Math.floor(uptime % 60);
 
-    const captionText = `
-╭───────◅●◆●▻───────➣
-│ *🩸 BLOOD XMD MAIN MENU 🩸*
-│──────────────────────────
-│ *User:* ${pushname}
-│ *Prefix:* ${config.PREFIX}
-│ *Mode:* ${config.MODE}
-│ *Version:* 1.0.0
-│ *Platform:* Heroku [Free]
-│──────────────────────────
-│ *Developer:* SACHITHRA MADUSANKA 👨‍💻
-╰───────◅●◆●▻───────➣
+        const captionText = `
+*╭────◅●◆●▻────➣*
+*│┌─────────➣*
+*││ʙᴏᴛ ᴜᴘᴛɪᴍᴇ ➟ ${hours}h ${minutes}m ${seconds}s*
+*││ᴘʟᴀᴛꜰᴏʀᴍ ➟ ${os.platform()}*
+*││ʀᴀᴍ ᴜꜱᴇɢᴇ ➟ ${(os.totalmem()/1073741824).toFixed(2)} GB*
+*││ʙᴏᴛ ᴏᴡɴᴇʀ ➟ 94761332610*
+*││ᴠᴇʀꜱɪᴏɴ ➟ 1.0.0*
+*│└─────────➣*
+*╰────◅●◆●▻────➢*
 
-*💬 MAIN COMMANDS LIST 💬*
+> ʙʟᴏᴏᴅ χ ᴍᴅ ᴍɪɴɪ ʙᴏᴛ 💚👨‍🔧
 
-• .downloadmenu   📥  
-• .groupmenu      👥  
-• .funmenu        🎉  
-• .ownermenu      👑  
-• .aimenu         🤖  
-• .animemenu      🌸  
-• .convertmenu    🔄  
-• .othermenu      🧩  
-• .reactionmenu   💞  
-• .settingsmenu   ⚙️  
-• .mainmenu       🏠  
-• .logo           🖼️  
+*ＡＣＴＩＶＥ - ＦＵＬＬ- ＣＯＭＭＡＮＤ*
 
-> ⚡ 𝘗𝘖𝘞𝘌𝘙𝘋 𝘉𝘠 𝘚𝘈𝘊𝘏𝘐𝘛𝘏𝘙𝘈 𝘔𝘈𝘋𝘜𝘚𝘈𝘕𝘒𝘈 ⚡
+*┌──────●◆●───➣*
+*││• ᴀʟɪᴠᴇ*
+*││• ᴍᴇɴᴜ*
+*││• ꜱʏꜱᴛᴇᴍ*
+*││• ꜰʙ*
+*││• ꜱᴏɴɢ*
+*││• ꜱᴘᴏᴛɪꜰʏ*
+*││• ᴛᴛ*
+*││• ᴀɪɪᴍᴀɢᴇ*
+*││• ɴᴀꜱᴀ*
+*││• ɢᴏꜱꜱɪᴘ*
+*││• ᴄʀɪᴄᴋᴇᴛ*
+*││• ᴘɪɴɢ*
+*││• ᴅᴇʟᴇᴛᴇᴍᴇ*
+*└────────➣*
+
+*_ＡＵＴＯ  ＳＥＴＴＩＮＧＳ ⚙️_*
+💭 ᴀᴜᴛᴏ ꜱᴛᴀᴛᴜꜱ ꜱᴇᴇɴ 
+💭 ᴀᴜᴛᴏ ꜱᴛᴀᴛᴜꜱ ʀᴇᴀᴄᴛ
+💭 ᴀᴜᴛᴏ ʀᴇᴄᴏʀᴅɪɴɢ ᴏɴ
 `;
 
-    const buttons = [
-      {
-        buttonId: `${config.PREFIX}ping`,
-        buttonText: { displayText: "📶 Ping Signal" },
-        type: 1
-      },
-      {
-        buttonId: `${config.PREFIX}alive`,
-        buttonText: { displayText: "💫 Bot Alive" },
-        type: 1
-      },
-      {
-        buttonId: `${config.PREFIX}owner`,
-        buttonText: { displayText: "👑 Contact Owner" },
-        type: 1
-      }
-    ];
+        const buttons = [
+            {
+                buttonId: `${config.PREFIX}ping`,
+                buttonText: { displayText: '📶 ʙʟᴏᴏᴅ ᴘɪɴɢ' },
+                type: 1
+            },
+            {
+                buttonId: `${config.PREFIX}alive`,
+                buttonText: { displayText: '💚 ʙʟᴏᴏᴅ ᴀʟɪᴠᴇ' },
+                type: 1
+            },
+            {
+                buttonId: `${config.PREFIX}owner`,
+                buttonText: { displayText: '👨‍🔧 ᴄᴏɴᴛᴀᴄᴛ ᴏᴡɴᴇʀ' },
+                type: 1
+            }
+        ];
 
-    await conn.sendMessage(
-      from,
-      {
-        image: { url: "https://files.catbox.moe/1nr6yp.jpg" },
-        caption: captionText.trim(),
-        footer: "🩸 BLOOD XMD MULTI-DEVICE BOT 🩸",
-        buttons: buttons,
-        headerType: 4
-      },
-      { quoted: m }
-    );
+        const imageUrl = "https://files.catbox.moe/kc86ar.jpg";
 
-  } catch (e) {
-    console.log("Menu Button Error:", e);
-    await conn.sendMessage(from, { text: "❌ Error displaying menu buttons!" }, { quoted: m });
-  }
+        await conn.sendMessage(from, {
+            image: { url: imageUrl },
+            caption: captionText.trim(),
+            footer: '*POWERED BY SACHITHRA MADUSANKA 👨‍🔧⚡*',
+            buttons: buttons,
+            headerType: 1
+        }, { quoted: mek });
+
+    } catch (error) {
+        console.log("Mainmenu error:", error);
+        reply("❌ Something went wrong while displaying mainmenu!");
+    }
 });
